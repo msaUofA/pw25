@@ -673,3 +673,57 @@ body {
 @media (max-width: 420px) {
   .banner-container { margin-bottom: 1rem; }
 }
+
+
+/* === Smaller Instagram embeds (desktop + mobile) === */
+
+/* General desktop/laptop: smaller cards and padding */
+.instagram-grid {
+  gap: 1.5rem; /* was 2rem :contentReference[oaicite:0]{index=0} */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* smaller cards */
+  margin-top: 1.5rem;
+}
+
+.instagram-embed {
+  background: rgba(139, 0, 0, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1rem;                  /* tighter padding (was 1.5rem) :contentReference[oaicite:1]{index=1} */
+  min-height: 320px;              /* was 400px :contentReference[oaicite:2]{index=2} */
+  max-width: 340px;               /* new: limit width per card */
+  margin: 0 auto;                 /* center cards in grid */
+  transition: all 0.3s ease;
+}
+
+.instagram-embed:hover {
+  transform: scale(1.03);
+  border-color: rgba(206, 17, 38, 0.4);
+}
+
+/* Medium screens (≤1024px): two smaller columns */
+@media (max-width: 1024px) {
+  .instagram-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+  .instagram-embed {
+    min-height: 280px;
+    max-width: 300px;
+  }
+}
+
+/* Mobile (≤768px): single-column smaller embeds */
+@media (max-width: 768px) {
+  .instagram-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .instagram-embed {
+    min-height: 260px;  /* smaller still for mobile */
+    max-width: 100%;
+    padding: 0.75rem;
+  }
+}
+
